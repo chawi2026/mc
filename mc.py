@@ -50,9 +50,18 @@ def Logo():
 
 def feature():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-o", "--option", help="features option", choices=["internet", "setup", "one", "two"], required=True)
+    parser.add_argument("option", help="features option", choices=["internet", "setup", "one", "two"], nargs='?', default=None)
     args = parser.parse_args() 
+    
     option = args.option
+    
+    if not option:
+        Logo()
+        print(f"{y}[*] Usage: python mc.py [one/two]")
+        print(f"{g}[+] one : Setup")
+        print(f"{g}[+] two : Internet Bypass")
+        Line()
+        sys.exit(0)
 
     if option == "internet" or option == "two":
         asyncio.run(InternetAccess().main())
