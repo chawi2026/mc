@@ -50,13 +50,13 @@ def Logo():
 
 def feature():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-o", "--option", help="features option", choices=["internet", "setup"], required=True)
+    parser.add_argument("-o", "--option", help="features option", choices=["internet", "setup", "one", "two"], required=True)
     args = parser.parse_args() 
     option = args.option
 
-    if option == "internet":
+    if option == "internet" or option == "two":
         asyncio.run(InternetAccess().main())
-    elif option == "setup":
+    elif option == "setup" or option == "one":
         Setup().set()
 
 def get_mac():
